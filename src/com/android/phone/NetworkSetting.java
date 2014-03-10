@@ -422,7 +422,9 @@ public class NetworkSetting extends PreferenceActivity
                 // confusing mcc/mnc.
                 for (OperatorInfo ni : result) {
                     Preference carrier = new Preference(this, null);
-                    carrier.setTitle(getNetworkTitle(ni));
+                    carrier.setTitle(getNetworkTitle(ni)
+                            + " (" + ni.getOperatorRat() + ", "
+                            + ni.getState().toString().toLowerCase() + ")");
                     carrier.setPersistent(false);
                     mNetworkList.addPreference(carrier);
                     mNetworkMap.put(carrier, ni);
